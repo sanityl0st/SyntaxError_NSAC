@@ -8,7 +8,14 @@ Description: Gives a list of open data project about water quality.
 Name: ATTAINS
 url: https://www.epa.gov/waterdata/get-data-access-public-attains-data
 Description:  information on water quality assessments, impaired waters, and total maximum daily loads (TMDLs)
+DATA FORMATS: JSON
 
 Name: WATERS
 url: https://www.epa.gov/waterdata/waters-watershed-assessment-tracking-environmental-results-system
 Description: The data architecture of WATERS integrates information from various EPA water programs by linking it to the national surface water network.
+DATA FORMATS: JSON
+
+Name: National Water Quality Data
+url: https://coast.noaa.gov/digitalcoast/data/water-quality.html
+Description: The National Water Quality Data Portal integrates publicly available water quality data from the Geological Survey’s National Water Information System, the Environmental Protection Agency’s Storage and Retrieval (STORET) Data Warehouse, and the Department of Agriculture’s Sustaining the Earth’s Watersheds Agricultural Research Database System (STEWARDS). Information includes a wide variety of site and sampling parameters, available for each sample location since the beginning of that database.
+DATA FORMATS: CSV, TSV, KML
