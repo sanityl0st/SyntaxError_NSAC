@@ -1,0 +1,10 @@
+Potential Resources for our project;
+
+
+Name: GeoAquaWatch
+url: https://www.geoaquawatch.org/water-quality-database-inventory/
+Description: Gives a list of open data project about water quality. 
+
+Name: ATTAINS
+url: https://www.epa.gov/waterdata/get-data-access-public-attains-data
+Description:  information on water quality assessments, impaired waters, and total maximum daily loads (TMDLs)
