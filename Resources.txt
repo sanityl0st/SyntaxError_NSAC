@@ -8,3 +8,7 @@ Description: Gives a list of open data project about water quality.
 Name: ATTAINS
 url: https://www.epa.gov/waterdata/get-data-access-public-attains-data
 Description:  information on water quality assessments, impaired waters, and total maximum daily loads (TMDLs)
+
+Name: WATERS
+url: https://www.epa.gov/waterdata/waters-watershed-assessment-tracking-environmental-results-system
+Description: The data architecture of WATERS integrates information from various EPA water programs by linking it to the national surface water network.
