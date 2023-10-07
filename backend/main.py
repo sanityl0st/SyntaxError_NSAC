@@ -101,14 +101,8 @@ def hello_world():
     return "Hello world!"
 
 #Test Cases for California
-<<<<<<< HEAD
 #searchStateCode("CA")
 #StateSummary("CA")
 #stateAssessments("CA")
 AUI = getAUI("CA", "Merced")
 getWaterInfo("CA", AUI[0])
-=======
-# searchStateCode("CA")
-# StateSummary("CA")
-# stateAssessments("CA")
->>>>>>> e0bb20c5883779f10b529f90457d17caeb5794d8
