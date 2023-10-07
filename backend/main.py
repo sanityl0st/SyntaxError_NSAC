@@ -101,7 +101,7 @@ def getWaterInfo(stateAB, AUI):
 def hello_world():
     return "Hello world!"
 
-@app.route("/MercedInfo")
+@app.route("/merced-info")
 def run():
     AUI = getAUI("CA", "Merced")
     wInfo = getWaterInfo("CA", AUI[1][0])
