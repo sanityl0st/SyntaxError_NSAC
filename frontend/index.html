@@ -24,11 +24,9 @@
               <u>The Way of Water</u>
             </b>
           </h1>
-          <select name="city" required>
-            <option value="none">Select a city...</option>
-            <option value="la">Los Angeles</option>
-            <option value="merced">Merced</option>
-            <option value="irvine">Irvine</option>
+          <select name="county" required>
+            <option value="none">Select a county...</option>
+            <option>Merced</option>
           </select>
           <button class="mt-4">Search</button>
         </form>
@@ -36,7 +34,7 @@
       <div class="col">
         <div class="invisible" id="result-container">
           <h2 class="mb-4">Result</h2>
-          <div>City: <span id="result-city"></span></div>
+          <div id="result-test"></div>
           <p>test</p>
         </div>
       </div>

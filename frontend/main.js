@@ -1,11 +1,20 @@
+const DEV = true;
+
+const BASE_URL = DEV ? 'http://127.0.0.1:5000' : '/api';
+
 document.getElementById('search-form').addEventListener('submit', (event) => {
   event.preventDefault();
-  const city = event.target.elements.city.value;
-  if (city === 'none') return;
+  const county = event.target.elements.county.value;
+  if (county === 'none') return;
 
   const resultContainer = document.getElementById('result-container');
   resultContainer.classList.remove('invisible');
 
-  document.getElementById('result-city').innerText = city;
-  // TOOD: get data from backend and display it
+  const resultTestElement = document.getElementById('result-test');
+
+  fetch(`${BASE_URL}/county-info?county=${county}`)
+    .then((response) => response.json())
+    .then((result) => {
+      resultTestElement.innerText = JSON.stringify(result, null, 4);
+    });
 });
