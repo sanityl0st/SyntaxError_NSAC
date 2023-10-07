@@ -1,9 +1,9 @@
-const DEV = true;
+const DEV = false;
 
 const BASE_URL = DEV ? 'http://127.0.0.1:5000' : '/api';
 
 const getBodyOfWaterOptions = (county) => {
-  fetch(BASE_URL + '/bodies?state=CA&county=Merced')
+  fetch(`${BASE_URL}/bodies?state=CA&county=${county}`)
     .then((response) => response.json())
     .then((result) => {
       const bodyOfWaterSelect = document.getElementById('body-of-water');
