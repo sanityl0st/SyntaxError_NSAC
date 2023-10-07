@@ -110,7 +110,7 @@ def run():
     county = request.args.get('county')
     AUI = getAUI(stateID, county)
     wInfo = getWaterInfo(stateID, AUI[1][0])
-    return wInfo
+    return {"body of water" : AUI[0][0], "info" : wInfo}
 
 #Test Cases for California
 #searchStateCode("CA")
