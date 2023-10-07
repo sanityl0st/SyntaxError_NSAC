@@ -2,6 +2,7 @@
 #importing requests library so that we can get requests from API
 import requests
 from flask import Flask
+from flask import request
 
 app = Flask(__name__)
 
@@ -101,10 +102,12 @@ def getWaterInfo(stateAB, AUI):
 def hello_world():
     return "Hello world!"
 
-@app.route("/merced-info")
+@app.route("/county-info")
 def run():
-    AUI = getAUI("CA", "Merced")
-    wInfo = getWaterInfo("CA", AUI[1][0])
+    stateID = "CA"
+    county = request.args.get('county')
+    AUI = getAUI(stateID, county)
+    wInfo = getWaterInfo(stateID, AUI[1][0])
     return wInfo
 
 #Test Cases for California
