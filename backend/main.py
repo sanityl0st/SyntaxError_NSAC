@@ -5,7 +5,6 @@ import requests
 #importing json library so that we can format JSON to Python Dictionary 
 import json
 
-
 #---------------------ATTAIN API USAGE--------------------------
 
 #Made a list of all U.S. Abbreviation in case we decide to use a dropdown
@@ -56,9 +55,13 @@ def StateSummary(stateAB):
     #Just prints the data. Still developing which data values will be of most use for project
     print(data)
 
+def stateAssessments(stateAb):
+    stateCode = searchStateCode(stateAb)
+    baseURL = "https://attains.epa.gov/attains-public/api/assessments?organizationId="
+    info = requests.get(baseURL + stateCode)
+    data = info.json()
+
+    print(data)
 
 #Test Cases for California
-searchStateCode("CA")
-StateSummary("CA")
-
-    
+stateAssessments("CA")
