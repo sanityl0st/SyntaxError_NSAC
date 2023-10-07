@@ -80,7 +80,8 @@ def getAUI(stateAB,county):
     print(allUnitNames)
     print(allAUI)
     return allAUI
-    
+   
+
 def getWaterInfo(stateAB, AUI):
     baseURL = "https://attains.epa.gov/attains-public/api/assessments?"
     stateCode = "state=" + stateAB
@@ -94,6 +95,7 @@ def getWaterInfo(stateAB, AUI):
         waterUSE[i["useName"]] = i["useAttainmentCodeName"]
     
     print(waterUSE)
+    return waterUSE
         
 
 @app.route("/")
@@ -106,3 +108,12 @@ def hello_world():
 #stateAssessments("CA")
 AUI = getAUI("CA", "Merced")
 getWaterInfo("CA", AUI[0])
+<<<<<<< Updated upstream
+=======
+
+@app.route("/MercedInfo")
+def run():
+    AUI = getAUI("CA", "Merced")
+    wInfo = getWaterInfo("CA", AUI[0])
+    return wInfo
+>>>>>>> Stashed changes
