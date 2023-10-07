@@ -5,6 +5,8 @@ from flask import Flask
 #importing json library so that we can format JSON to Python Dictionary 
 import json
 
+app = Flask(__name__)
+
 #---------------------ATTAIN API USAGE--------------------------
 
 #Made a list of all U.S. Abbreviation in case we decide to use a dropdown
@@ -69,11 +71,13 @@ def getAUI(stateAB,county):
     countyCode = "&county=" + county
     info = requests.get(baseURL + stateCode + countyCode)
     data = info.json()
+    allUnitNames = []
     allAUI = []
 
     for i in data["items"][0]["assessmentUnits"]:
         allAUI.append(i["assessmentUnitIdentifier"])
-
+        allUnitNames.append(i["assessmentUnitName"])
+    print(allUnitNames)
     print(allAUI)
     return allAUI
     
@@ -92,9 +96,19 @@ def getWaterInfo(stateAB, AUI):
     print(waterUSE)
         
 
+@app.route("/")
+def hello_world():
+    return "Hello world!"
+
 #Test Cases for California
+<<<<<<< HEAD
 #searchStateCode("CA")
 #StateSummary("CA")
 #stateAssessments("CA")
 AUI = getAUI("CA", "Merced")
 getWaterInfo("CA", AUI[0])
+=======
+# searchStateCode("CA")
+# StateSummary("CA")
+# stateAssessments("CA")
+>>>>>>> e0bb20c5883779f10b529f90457d17caeb5794d8
