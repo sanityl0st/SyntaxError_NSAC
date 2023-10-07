@@ -63,6 +63,19 @@ def stateAssessments(stateAb):
 
     print(data)
 
+def getAUI(stateAB,county):
+    baseURL = "https://attains.epa.gov/attains-public/api/assessmentUnits?"
+    stateCode = "stateCode=" + stateAB
+    countyCode = "&county=" + county
+    info = requests.get(baseURL + stateCode + countyCode)
+    data = info.json()
+    allAUI = []
+
+    for i in data["items"][0]["assessmentUnits"]:
+        allAUI.append(i["assessmentUnitIdentifier"])
+
+    print(allAUI)
+
 #Test Cases for California
 searchStateCode("CA")
 StateSummary("CA")
