@@ -92,25 +92,20 @@ def getWaterInfo(stateAB, AUI):
     print(AUI)
     info = requests.get(baseURL + stateCode + AUICode)
     data = info.json()
-    parameterName = []
-    parameterStatus = []
-    pollutantIndicator = []
     waterUSE = {}
-    totalPollutantInfo = []
+    parameters = {}
     
     for i in data["items"][0]["assessments"][0]["useAttainments"]:
         waterUSE[i["useName"]] = i["useAttainmentCodeName"]
 
     for i in data["items"][0]["assessments"][0]["parameters"]:
-        parameterName.append(i["parameterName"])
-        parameterStatus.append(i["parameterStatusName"])
-        pollutantIndicator.append(i["parameterStatusName"])
+        parameters[i["parameterName"]] = [i["parameterStatusName"], i["pollutantIndicator"]]
+        
+        #pollutantIndicator = (i["parameterStatusName"])
 
-    totalPollutantInfo.append(parameterName)
-    totalPollutantInfo.append(parameterStatus)
-    totalPollutantInfo.append(pollutantIndicator)
-    
-    print(totalPollutantInfo)
+
+    #totalPollutantInfo = parameter | parameterStatus | pollutantIndicator
+    print(parameters)
     print(waterUSE)
     return waterUSE
 
