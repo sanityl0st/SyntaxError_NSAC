@@ -26,7 +26,6 @@ body {
 }
 
 #result-container {
-  text-align: center;
   border: 3px rgb(129, 197, 197) solid;
   background-color: white;
   padding: 2rem;
@@ -76,4 +75,8 @@ button {
 
 button:hover {
   background-color: rgb(31, 61, 118);
+}
+
+code {
+  text-align: left;
 }
