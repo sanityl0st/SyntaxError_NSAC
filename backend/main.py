@@ -66,7 +66,6 @@ def stateAssessments(stateAb):
 
     print(data)
 
-@app.route("/getBodies")
 def getAUI(stateAB,county):
     baseURL = "https://attains.epa.gov/attains-public/api/assessmentUnits?"
     stateCode = "stateCode=" + stateAB
@@ -84,6 +83,10 @@ def getAUI(stateAB,county):
     NameAndAUI.append(allAUI)
     print(NameAndAUI)
     return NameAndAUI
+
+@app.route("/bodies")
+def get_bodies():
+    return getAUI(request.args.get("state"), request.args.get("county"))
     
 #
 def getWaterInfo(stateAB, AUI):
@@ -123,20 +126,14 @@ def getCounty():
     wInfo = getWaterInfo(stateID, AUI[1][0])
     return {"body_of_water" : AUI[0][0], "info" : wInfo}
 
-@app.route("/body-of-water/<menu>")
-def getWaterbody(menu):
-    stateID = "CA"
-    county = str(menu)
-    #county = request.args.get('county')
-    waterbody = request.args.get('waterbody')
-    waterbody = int(waterbody)
-    AUI = getAUI(stateID, county)
-    wInfo = getWaterInfo(stateID, AUI[1][waterbody])
-    
-    return {AUI[0][waterbody]: wInfo}
+@app.route("/body")
+def getWaterbody():
+    aui = request.args.get('aui')
+    wInfo = getWaterInfo('CA', aui)
+    return wInfo
 
 #Test Cases for California
 #searchStateCode("CA")
 #StateSummary("CA")
 #stateAssessments("CA")
-getWaterInfo("CA","CAR5412000020080820161412")
+# getWaterInfo("CA","CAR5412000020080820161412")
