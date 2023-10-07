@@ -42,7 +42,7 @@ def searchStateCode(stateAB):
     else:
         return "Error Message: State not found"
 
-#
+#Function for getting a summary of the state water data
 def StateSummary(stateAB):
     #pulls state code from previous function
     stateCode = searchStateCode(stateAB)
