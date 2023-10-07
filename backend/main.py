@@ -64,10 +64,6 @@ def stateAssessments(stateAb):
     print(data)
 
 #Test Cases for California
-<<<<<<< HEAD
 searchStateCode("CA")
 StateSummary("CA")
 stateAssessments("CA")
-=======
-stateAssessments("CA")
->>>>>>> 5f2cfc8fe949ce0a13a6f8b9ec943bc9479b2c5b
