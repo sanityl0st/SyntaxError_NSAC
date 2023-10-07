@@ -73,13 +73,15 @@ def getAUI(stateAB,county):
     data = info.json()
     allUnitNames = []
     allAUI = []
+    NameAndAUI = []
 
     for i in data["items"][0]["assessmentUnits"]:
         allAUI.append(i["assessmentUnitIdentifier"])
         allUnitNames.append(i["assessmentUnitName"])
-    print(allUnitNames)
-    print(allAUI)
-    return allAUI
+    NameAndAUI.append(allUnitNames)
+    NameAndAUI.append(allAUI)
+    print(NameAndAUI)
+    return NameAndAUI
     
 def getWaterInfo(stateAB, AUI):
     baseURL = "https://attains.epa.gov/attains-public/api/assessments?"
@@ -105,4 +107,7 @@ def hello_world():
 #StateSummary("CA")
 #stateAssessments("CA")
 AUI = getAUI("CA", "Merced")
-getWaterInfo("CA", AUI[0])
+getWaterInfo("CA", AUI[1][0])
+# searchStateCode("CA")
+# StateSummary("CA")
+# stateAssessments("CA")
