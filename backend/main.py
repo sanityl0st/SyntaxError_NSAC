@@ -2,8 +2,6 @@
 #importing requests library so that we can get requests from API
 import requests
 from flask import Flask
-#importing json library so that we can format JSON to Python Dictionary 
-import json
 
 app = Flask(__name__)
 
@@ -78,19 +76,11 @@ def getAUI(stateAB,county):
     for i in data["items"][0]["assessmentUnits"]:
         allAUI.append(i["assessmentUnitIdentifier"])
         allUnitNames.append(i["assessmentUnitName"])
-<<<<<<< HEAD
-    print(allUnitNames)
-    print(allAUI)
-    return allAUI
-   
-
-=======
     NameAndAUI.append(allUnitNames)
     NameAndAUI.append(allAUI)
     print(NameAndAUI)
     return NameAndAUI
     
->>>>>>> 2fae891aa0c0f963aef11bf140a7aae6de98db6d
 def getWaterInfo(stateAB, AUI):
     baseURL = "https://attains.epa.gov/attains-public/api/assessments?"
     stateCode = "state=" + stateAB
@@ -111,25 +101,13 @@ def getWaterInfo(stateAB, AUI):
 def hello_world():
     return "Hello world!"
 
+@app.route("/MercedInfo")
+def run():
+    AUI = getAUI("CA", "Merced")
+    wInfo = getWaterInfo("CA", AUI[1][0])
+    return wInfo
+
 #Test Cases for California
 #searchStateCode("CA")
 #StateSummary("CA")
 #stateAssessments("CA")
-AUI = getAUI("CA", "Merced")
-<<<<<<< HEAD
-getWaterInfo("CA", AUI[0])
-<<<<<<< Updated upstream
-=======
-
-@app.route("/MercedInfo")
-def run():
-    AUI = getAUI("CA", "Merced")
-    wInfo = getWaterInfo("CA", AUI[0])
-    return wInfo
->>>>>>> Stashed changes
-=======
-getWaterInfo("CA", AUI[1][0])
-# searchStateCode("CA")
-# StateSummary("CA")
-# stateAssessments("CA")
->>>>>>> 2fae891aa0c0f963aef11bf140a7aae6de98db6d
