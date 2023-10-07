@@ -1,0 +1,63 @@
+h1 {
+    padding-bottom: 25px;
+}
+
+
+
+.col-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-right: 10%;
+    transform: translate(-12px);
+    background-color: aliceblue;
+    height: 100vh;
+    width: 55%;
+    border-top-right-radius: 100%;
+}
+
+
+
+body {
+    background-image: url(https://img.freepik.com/premium-photo/surface-blue-sea-water-background_70626-12794.jpg?w=2000);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 200vh;
+}
+
+
+
+#dropdown {
+    background-color: white;
+    min-width: 200px;
+    font-size: 1.5em;
+}
+
+
+#water {
+    
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+}
+
+
+
+input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    height: 30px;
+    border: 1px solid dodgerblue;
+    border-radius: 25px;
+    background-color: dodgerblue;
+    color: white;
+    margin-top: 35px;
+}
+
+
+input:hover {
+    background-color: rgb(31, 61, 118);
+}
