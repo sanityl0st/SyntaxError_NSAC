@@ -75,8 +75,26 @@ def getAUI(stateAB,county):
         allAUI.append(i["assessmentUnitIdentifier"])
 
     print(allAUI)
+    return allAUI
+    
+def getWaterInfo(stateAB, AUI):
+    baseURL = "https://attains.epa.gov/attains-public/api/assessments?"
+    stateCode = "state=" + stateAB
+    AUICode = "&assessmentUnitIdentifier=" + AUI
+    print(AUI)
+    info = requests.get(baseURL + stateCode + AUICode)
+    data = info.json()
+    waterUSE = {}
+    
+    for i in data["items"][0]["assessments"][0]["useAttainments"]:
+        waterUSE[i["useName"]] = i["useAttainmentCodeName"]
+    
+    print(waterUSE)
+        
 
 #Test Cases for California
-searchStateCode("CA")
-StateSummary("CA")
-stateAssessments("CA")
+#searchStateCode("CA")
+#StateSummary("CA")
+#stateAssessments("CA")
+AUI = getAUI("CA", "Merced")
+getWaterInfo("CA", AUI[0])
