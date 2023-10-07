@@ -69,11 +69,13 @@ def getAUI(stateAB,county):
     countyCode = "&county=" + county
     info = requests.get(baseURL + stateCode + countyCode)
     data = info.json()
+    allUnitNames = []
     allAUI = []
 
     for i in data["items"][0]["assessmentUnits"]:
         allAUI.append(i["assessmentUnitIdentifier"])
-
+        allUnitNames.append(i["assessmentUnitName"])
+    print(allUnitNames)
     print(allAUI)
 
 #Test Cases for California
