@@ -92,14 +92,28 @@ def getWaterInfo(stateAB, AUI):
     print(AUI)
     info = requests.get(baseURL + stateCode + AUICode)
     data = info.json()
+    parameterName = []
+    parameterStatus = []
+    pollutantIndicator = []
     waterUSE = {}
+    totalPollutantInfo = []
     
     for i in data["items"][0]["assessments"][0]["useAttainments"]:
         waterUSE[i["useName"]] = i["useAttainmentCodeName"]
+
+    for i in data["items"][0]["assessments"][0]["parameters"]:
+        parameterName.append(i["parameterName"])
+        parameterStatus.append(i["parameterStatusName"])
+        pollutantIndicator.append(i["parameterStatusName"])
+
+    totalPollutantInfo.append(parameterName)
+    totalPollutantInfo.append(parameterStatus)
+    totalPollutantInfo.append(pollutantIndicator)
     
+    print(totalPollutantInfo)
     print(waterUSE)
     return waterUSE
-        
+
 
 @app.route("/")
 def hello_world():
@@ -129,3 +143,4 @@ def getWaterbody(menu):
 #searchStateCode("CA")
 #StateSummary("CA")
 #stateAssessments("CA")
+getWaterInfo("CA","CAR5412000020080820161412")
