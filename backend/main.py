@@ -66,6 +66,7 @@ def stateAssessments(stateAb):
 
     print(data)
 
+@app.route("/getBodies")
 def getAUI(stateAB,county):
     baseURL = "https://attains.epa.gov/attains-public/api/assessmentUnits?"
     stateCode = "stateCode=" + stateAB
@@ -99,7 +100,7 @@ def getWaterInfo(stateAB, AUI):
         waterUSE[i["useName"]] = i["useAttainmentCodeName"]
 
     for i in data["items"][0]["assessments"][0]["parameters"]:
-        parameters[i["parameterName"]] = [i["parameterStatusName"], i["pollutantIndicator"], ]
+        parameters[i["parameterName"]] = [i["parameterStatusName"], i["pollutantIndicator"]]
         
         #pollutantIndicator = (i["parameterStatusName"])
 
