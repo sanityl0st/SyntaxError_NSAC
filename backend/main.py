@@ -66,6 +66,7 @@ def stateAssessments(stateAb):
 
     print(data)
 
+
 def getAUI(stateAB,county):
     baseURL = "https://attains.epa.gov/attains-public/api/assessmentUnits?"
     stateCode = "stateCode=" + stateAB
@@ -111,7 +112,7 @@ def getWaterInfo(stateAB, AUI):
     #totalPollutantInfo = parameter | parameterStatus | pollutantIndicator
     print(parameters)
     print(waterUSE)
-    return waterUSE
+    return [waterUSE, parameters]
 
 
 @app.route("/")
@@ -123,17 +124,24 @@ def getCounty():
     stateID = "CA"
     county = request.args.get('county')
     AUI = getAUI(stateID, county)
-    wInfo = getWaterInfo(stateID, AUI[1][0])
+    wInfo = getWaterInfo(stateID, AUI[1][0])[0]
     return {"body_of_water" : AUI[0][0], "info" : wInfo}
 
 @app.route("/body")
 def getWaterbody():
     aui = request.args.get('aui')
-    wInfo = getWaterInfo('CA', aui)
+    wInfo = getWaterInfo('CA', aui)[0]
     return wInfo
 
+
+@app.route("/body/pollutants")
+def getParameters():
+    aui = request.args.get('aui')
+    paramInfo = getWaterInfo('CA', aui)[1]
+    return paramInfo
+    
 #Test Cases for California
 #searchStateCode("CA")
 #StateSummary("CA")
 #stateAssessments("CA")
-# getWaterInfo("CA","CAR5412000020080820161412")
+#getWaterInfo("CA","CAR5412000020080820161412")
