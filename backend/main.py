@@ -171,12 +171,6 @@ def getParameters():
     paramInfo = getWaterInfo('CA', aui)[1]
     return paramInfo
 
-@app.route("/body/pollutantsSummary")
-def getParameters():
-    aui = request.args.get('aui')
-    pollutantSummary = PollutantCategorize('CA', aui)
-    return pollutantSummary
-    
 #Test Cases for California
 #searchStateCode("CA")
 #StateSummary("CA")
