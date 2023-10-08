@@ -99,13 +99,14 @@ def getWaterInfo(stateAB, AUI):
     data = info.json()
     waterUSE = {}
     parameters = {}
-    
-    for i in data["items"][0]["assessments"][0]["useAttainments"]:
-        waterUSE[i["useName"]] = i["useAttainmentCodeName"]
-
-    for i in data["items"][0]["assessments"][0]["parameters"]:
-        parameters[i["parameterName"]] = [i["parameterStatusName"], i["pollutantIndicator"]]
         
+    if len(data["items"][0]["assessments"]) != 0:
+        for i in data["items"][0]["assessments"][0]["useAttainments"]:
+            waterUSE[i["useName"]] = i["useAttainmentCodeName"]
+
+        for i in data["items"][0]["assessments"][0]["parameters"]:
+            parameters[i["parameterName"]] = [i["parameterStatusName"], i["pollutantIndicator"]]
+            
         #pollutantIndicator = (i["parameterStatusName"])
 
 
