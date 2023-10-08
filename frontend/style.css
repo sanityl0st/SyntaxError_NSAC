@@ -33,6 +33,11 @@ body {
   min-width: 16rem;
 }
 
+.result-table-wrapper {
+  overflow: auto;
+  max-height: 75vh;
+}
+
 form {
   width: 100%;
   max-width: 24rem;

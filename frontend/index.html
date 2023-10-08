@@ -36,15 +36,27 @@
       <div class="col">
         <div class="invisible" id="result-container">
           <h2 class="mb-4">Result</h2>
-          <table class="table" id="table">
-            <thead>
-              <tr>
-                <th scope="col">Unit name</th>
-                <th scope="col">Unit identifier</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+          <div class="result-table-wrapper">
+            <table class="table mb-4">
+              <thead>
+                <tr>
+                  <th scope="col">Unit name</th>
+                  <th scope="col">Unit identifier</th>
+                </tr>
+              </thead>
+              <tbody id="units-table-body"></tbody>
+            </table>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Pollutant name</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Indicator</th>
+                </tr>
+              </thead>
+              <tbody id="pollutants-table-body"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

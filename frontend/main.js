@@ -37,7 +37,7 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
   fetch(`${BASE_URL}/body?aui=${bodyOfWaterAUI}`)
     .then((response) => response.json())
     .then((result) => {
-      const tableBody = document.getElementsByTagName('tbody')[0];
+      const tableBody = document.getElementById('units-table-body');
       while (tableBody.hasChildNodes()) {
         tableBody.removeChild(tableBody.lastChild);
       }
@@ -48,6 +48,25 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
         const cell2 = row.insertCell();
         cell1.innerHTML = key;
         cell2.innerHTML = value;
+      });
+    });
+
+  fetch(`${BASE_URL}/body/pollutants?aui=${bodyOfWaterAUI}`)
+    .then((response) => response.json())
+    .then((result) => {
+      const tableBody = document.getElementById('pollutants-table-body');
+      while (tableBody.hasChildNodes()) {
+        tableBody.removeChild(tableBody.lastChild);
+      }
+
+      Object.entries(result).forEach(([key, value]) => {
+        const row = tableBody.insertRow();
+        const cell1 = row.insertCell();
+        const cell2 = row.insertCell();
+        const cell3 = row.insertCell();
+        cell1.innerHTML = key;
+        cell2.innerHTML = value[0];
+        cell3.innerHTML = value[1];
       });
     });
 });
