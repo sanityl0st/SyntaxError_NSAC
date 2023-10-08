@@ -66,7 +66,7 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
         const cell3 = row.insertCell();
         cell1.innerHTML = key;
         cell2.innerHTML = value[0];
-        cell3.innerHTML = value[1] ?? "--";
+        cell3.innerHTML = value[1] ?? '--';
       });
     });
 });
