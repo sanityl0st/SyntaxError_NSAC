@@ -8,15 +8,12 @@ body {
 }
 
 .col:first-child {
-  background-color: rgb(210, 222, 234);
   height: 100vh;
   display: flex;
   text-align: center;
   flex-direction: column;
   justify-content: center;
-  border-top-right-radius: 100%;
   align-items: center;
-  border: 3px rgb(129, 197, 197) solid;
 }
 
 .col:nth-child(2) {
@@ -43,11 +40,18 @@ form {
   max-width: 24rem;
   display: flex;
   flex-direction: column;
+  padding: 0 2rem;
 }
 
 @media only screen and (min-width: 768px) {
   form {
     margin-right: 4rem;
+    padding: 0;
+  }
+  .col:first-child {
+    background-color: rgb(210, 222, 234);
+    border-top-right-radius: 100%;
+    border: 3px rgb(129, 197, 197) solid;
   }
 }
 
