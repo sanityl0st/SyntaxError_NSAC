@@ -49,6 +49,14 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
         cell1.innerHTML = key;
         cell2.innerHTML = value;
       });
+
+      if (Object.entries(result).length === 0) {
+        const row = tableBody.insertRow();
+        const cell1 = row.insertCell();
+        const cell2 = row.insertCell();
+        cell1.innerHTML = 'No data available';
+        cell2.innerHTML = '--';
+      }
     });
 
   fetch(`${BASE_URL}/body/pollutants?aui=${bodyOfWaterAUI}`)
@@ -68,5 +76,15 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
         cell2.innerHTML = value[0];
         cell3.innerHTML = value[1] ?? '--';
       });
+
+      if (Object.entries(result).length === 0) {
+        const row = tableBody.insertRow();
+        const cell1 = row.insertCell();
+        const cell2 = row.insertCell();
+        const cell3 = row.insertCell();
+        cell1.innerHTML = 'No data available';
+        cell2.innerHTML = '--';
+        cell3.innerHTML = '--';
+      }
     });
 });
