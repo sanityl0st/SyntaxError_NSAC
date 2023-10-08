@@ -34,11 +34,20 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
   const resultContainer = document.getElementById('result-container');
   resultContainer.classList.remove('invisible');
 
-  const resultTestElement = document.getElementById('result-test');
-
   fetch(`${BASE_URL}/body?aui=${bodyOfWaterAUI}`)
     .then((response) => response.json())
     .then((result) => {
-      resultTestElement.innerText = JSON.stringify(result, null, 4);
+      const tableBody = document.getElementsByTagName('tbody')[0];
+      while (tableBody.hasChildNodes()) {
+        tableBody.removeChild(tableBody.lastChild);
+      }
+
+      Object.entries(result).forEach(([key, value]) => {
+        const row = tableBody.insertRow();
+        const cell1 = row.insertCell();
+        const cell2 = row.insertCell();
+        cell1.innerHTML = key;
+        cell2.innerHTML = value;
+      });
     });
 });
