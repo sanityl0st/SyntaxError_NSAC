@@ -5,16 +5,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
+      rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
-
   <body>
     <div class="row">
       <div class="col">
@@ -109,7 +107,122 @@
             </div>
           </div>
           <button class="mt-4">Search</button>
+          <button
+            type="button"
+            class="mt-2"
+            data-bs-toggle="modal"
+            data-bs-target="#tips-modal"
+          >
+            Tips to reduce contamination
+          </button>
         </form>
+        <div class="modal" tabindex="-1" id="tips-modal">
+          <div
+            class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          >
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Tips to reduce contamination</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    Do not throw rubbish away in places like the beach,
+                    riverside and water bodies, rather put it in the trash can.
+                  </li>
+                  <li class="list-group-item">
+                    Use water wisely. Do not keep the tap running when not in
+                    use.
+                  </li>
+                  <li class="list-group-item">
+                    Do not throw chemicals, oils, plastics, paints and medicines
+                    down the sink drain, or the toilet.
+                  </li>
+                  <li class="list-group-item">
+                    Buy more environmentally safe cleaning liquids for use at
+                    home and other public places.
+                  </li>
+                  <li class="list-group-item">
+                    Not to overuse pesticides and fertilizers in farms. This
+                    will reduce runoffs of the chemical into nearby water
+                    sources.
+                  </li>
+                  <li class="list-group-item">
+                    Natural fertilizers such as peat, compost, manure should be
+                    preferred while gardening and farming.
+                  </li>
+                  <li class="list-group-item">
+                    Implementing water quality laws can help in protecting
+                    aquatic ecosystems by imposing acceptable concentrations of
+                    pollutants and preventing the release of pollutants into
+                    water resources.
+                  </li>
+                  <li class="list-group-item">
+                    Proper use and disposal of chemicals prevent the
+                    contamination of aquatic environments.
+                  </li>
+                  <li class="list-group-item">
+                    Use detergents with low or no phosphate because high
+                    phosphate content causes eutrophication of lakes.
+                  </li>
+                  <li class="list-group-item">
+                    Control stormwater runoff. As the stormwater runoff flows
+                    over impervious surfaces, it collects debris, sediments,
+                    chemicals, and other pollutants which can have negative
+                    effects on the quality of water if the runoff is left
+                    untreated.
+                  </li>
+                  <li class="list-group-item">
+                    Decrease water-resistant surfaces such as cement around
+                    homes to reduce surface runoff. Vegetation, porous
+                    materials, gravel, wood decking, etc. can be used instead of
+                    cement.
+                  </li>
+                  <li class="list-group-item">
+                    Avoid throwing garbage into lakes, rivers, and streams and
+                    help in cleaning litter around water resources.
+                  </li>
+                  <li class="list-group-item">
+                    Wash your automobiles at car washes instead of washing it
+                    yourself. The wastewater from these car washes is drained
+                    into the sewer and treated which reduce the number of
+                    pollutants in the water.
+                  </li>
+                  <li class="list-group-item">
+                    Speak up against industries that dump waste into local
+                    streams, rivers, and beachfronts to reduce water pollution
+                    in your community.
+                  </li>
+                  <li class="list-group-item">
+                    Implement existing environmental laws. There are very strict
+                    laws that help minimize water pollution. These laws are
+                    usually directed at industries, hospitals, schools, and
+                    market areas on how to dispose, treat and manage sewage.
+                  </li>
+                  <li class="list-group-item">
+                    Do not dispose of non-degradable products such as plastic
+                    bags or plastic wrappers down the drain.
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary d-flex align-items-center"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col">
         <div class="invisible" id="result-container">
@@ -138,6 +251,11 @@
         </div>
       </div>
     </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
     <script src="./main.js"></script>
   </body>
 </html>
