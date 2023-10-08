@@ -2,7 +2,7 @@ body {
   background-image: url('https://img.freepik.com/premium-photo/surface-blue-sea-water-background_70626-12794.jpg?w=2000');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 200vh;
+  background-size: cover;
   min-height: 100vh;
   overflow-x: hidden;
 }
