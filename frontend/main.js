@@ -64,35 +64,45 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
     .then((result) => {
       const tableBody = document.getElementById('pollutants-table-body');
       while (tableBody.hasChildNodes()) {
-        console.log(tableBody.lastchild)
-        console.log("hee")
         tableBody.removeChild(tableBody.lastChild);
-
       }
 
+      const BLACKLIST = ['PH', 'DISSOLVED OXYGEN', 'SPECIFIC CONDUCTIVITY'];
+
       Object.entries(result).forEach(([key, value]) => {
+        if (BLACKLIST.includes(key)) return;
+
         const row = tableBody.insertRow();
         const cell1 = row.insertCell();
         const cell2 = row.insertCell();
         const cell3 = row.insertCell();
-        cell1.innerHTML = key;
-        cell2.innerHTML = value[0];
-        cell3.innerHTML = value[1] ?? '--';
-        if (cell2.innerHTML == "Meeting Criteria") {
-          cell2.innerHTML = "Meeting Standard"
-        } else if (cell2.innerHTML == "Not assesssed") {
-          cell2.innerHTML = "No Data"
-        } else if (cell2.innerHTML == "Not meeting criteria") {
-          cell2.innerHTML = "Detrimental to health"
-        } else if (cell2.innerHTML == "Not Meeting Threshold") {
-          cell2.innerHTML = "Detrimental to health";
-        } else if (cell2.innerHTML = "Insufficient Information") {
-          cell2.innerHTML = "Detected, but insignificant"
-        } else if (cell2.innerHTML == "Meeting Threshold") {
-          cell2.innerHTML = "Meeting Standard"
-        }
 
-        
+        cell1.innerHTML = key;
+        cell3.innerHTML = value[1] ?? '--';
+
+        switch (value[0]) {
+          case 'Meeting Criteria':
+            cell2.innerHTML = 'Meeting Standard';
+            break;
+          case 'Not assesssed':
+            cell2.innerHTML = 'No Data';
+            break;
+          case 'Not meeting criteria':
+            cell2.innerHTML = 'Detrimental to health';
+            break;
+          case 'Not Meeting Threshold':
+            cell2.innerHTML = 'Detrimental to health';
+            break;
+          case 'Insufficient Information':
+            cell2.innerHTML = 'Detected, but insignificant';
+            break;
+          case 'Meeting Threshold':
+            cell2.innerHTML = 'Meeting Standard';
+            break;
+          default:
+            cell2.innerHTML = value[0];
+            break;
+        }
       });
 
       if (Object.entries(result).length === 0) {
