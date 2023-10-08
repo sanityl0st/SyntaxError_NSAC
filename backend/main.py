@@ -66,6 +66,7 @@ def stateAssessments(stateAb):
 
     print(data)
 
+
 def getAUI(stateAB,county):
     baseURL = "https://attains.epa.gov/attains-public/api/assessmentUnits?"
     stateCode = "stateCode=" + stateAB
@@ -83,6 +84,10 @@ def getAUI(stateAB,county):
     NameAndAUI.append(allAUI)
     print(NameAndAUI)
     return NameAndAUI
+
+@app.route("/bodies")
+def get_bodies():
+    return getAUI(request.args.get("state"), request.args.get("county"))
     
 #
 def getWaterInfo(stateAB, AUI):
@@ -93,23 +98,22 @@ def getWaterInfo(stateAB, AUI):
     info = requests.get(baseURL + stateCode + AUICode)
     data = info.json()
     waterUSE = {}
+    parameters = {}
     
     for i in data["items"][0]["assessments"][0]["useAttainments"]:
         waterUSE[i["useName"]] = i["useAttainmentCodeName"]
 
-    print(waterUSE)
-    return waterUSE
-
-def getPollutantInfo(stateAB, AUI):
-    baseURL = "https://attains.epa.gov/attains-public/api/assessments?"
-    stateCode = "state=" + stateAB
-    AUICode = "&assessmentUnitIdentifier=" + AUI
-    info = requests.get(baseURL + stateCode + AUICode)
-    data = info.json()
-    parameters = {}
     for i in data["items"][0]["assessments"][0]["parameters"]:
         parameters[i["parameterName"]] = [i["parameterStatusName"], i["pollutantIndicator"]]
-    return parameters
+        
+        #pollutantIndicator = (i["parameterStatusName"])
+
+
+    #totalPollutantInfo = parameter | parameterStatus | pollutantIndicator
+    print(parameters)
+    print(waterUSE)
+    return [waterUSE, parameters]
+
 
 @app.route("/")
 def hello_world():
@@ -120,23 +124,24 @@ def getCounty():
     stateID = "CA"
     county = request.args.get('county')
     AUI = getAUI(stateID, county)
-    wInfo = getWaterInfo(stateID, AUI[1][0])
+    wInfo = getWaterInfo(stateID, AUI[1][0])[0]
     return {"body_of_water" : AUI[0][0], "info" : wInfo}
 
-@app.route("/body-of-water/<menu>")
-def getWaterbody(menu):
-    stateID = "CA"
-    county = str(menu)
-    #county = request.args.get('county')
-    waterbody = request.args.get('waterbody')
-    waterbody = int(waterbody)
-    AUI = getAUI(stateID, county)
-    wInfo = getWaterInfo(stateID, AUI[1][waterbody])
-    
-    return {AUI[0][waterbody]: wInfo}
+@app.route("/body")
+def getWaterbody():
+    aui = request.args.get('aui')
+    wInfo = getWaterInfo('CA', aui)[0]
+    return wInfo
 
+
+@app.route("/body/pollutants")
+def getParameters():
+    aui = request.args.get('aui')
+    paramInfo = getWaterInfo('CA', aui)[1]
+    return paramInfo
+    
 #Test Cases for California
 #searchStateCode("CA")
 #StateSummary("CA")
 #stateAssessments("CA")
-print(getPollutantInfo("CA","CAR5412000020080820161412"))
+#getWaterInfo("CA","CAR5412000020080820161412")
