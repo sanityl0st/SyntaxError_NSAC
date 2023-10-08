@@ -8,7 +8,7 @@ const getBodyOfWaterOptions = (county) => {
     .then((result) => {
       const bodyOfWaterSelect = document.getElementById('body-of-water');
       bodyOfWaterSelect.innerHTML = null;
-      bodyOfWaterSelect.add(new Option('Select a body of water', 'none'));
+      bodyOfWaterSelect.add(new Option('Select an option', 'none'));
       for (let i = 0; i < result[0].length; i++) {
         bodyOfWaterSelect.add(new Option(result[0][i], result[1][i]));
       }
@@ -66,7 +66,7 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
         const cell3 = row.insertCell();
         cell1.innerHTML = key;
         cell2.innerHTML = value[0];
-        cell3.innerHTML = value[1];
+        cell3.innerHTML = value[1] ?? "--";
       });
     });
 });

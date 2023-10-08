@@ -24,12 +24,37 @@
               <u>The Way of Water</u>
             </b>
           </h1>
-          <select name="county" id="county" class="mb-4" required>
-            <option selected>Merced</option>
-          </select>
-          <select name="body" id="body-of-water" required>
-            <option value="none">Loading...</option>
-          </select>
+          <div class="row g-2">
+            <div class="col-md">
+              <div class="form-floating">
+                <select
+                  class="form-select"
+                  id="county"
+                  name="county"
+                  autocomplete="off"
+                  required
+                >
+                  <option selected>Merced</option>
+                  <option>Alameda</option>
+                  <option>Calaveras</option>
+                  <option>Sacramento</option>
+                </select>
+                <label for="county">County</label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-floating">
+                <select
+                  class="form-select text-truncate"
+                  id="body-of-water"
+                  name="body"
+                >
+                  <option value="none">Loading...</option>
+                </select>
+                <label for="body-of-water">Body of water</label>
+              </div>
+            </div>
+          </div>
           <button class="mt-4">Search</button>
         </form>
       </div>
