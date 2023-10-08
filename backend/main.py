@@ -114,6 +114,37 @@ def getWaterInfo(stateAB, AUI):
     print(waterUSE)
     return [waterUSE, parameters]
 
+def PollutantCategorize(stateAB,AUI):
+    baseURL = "https://attains.epa.gov/attains-public/api/assessments?"
+    stateCode = "state=" + stateAB
+    AUICode = "&assessmentUnitIdentifier=" + AUI
+    print(AUI)
+    info = requests.get(baseURL + stateCode + AUICode)
+    data = info.json()
+    parameters = {}
+    
+    for i in data["items"][0]["assessments"][0]["parameters"]:
+        parameters[i["parameterName"]] = [i["parameterStatusName"], i["pollutantIndicator"]]
+
+    print(parameters)
+
+    secondaryURL = "https://attains.epa.gov/attains-public/api/domains?domainName=ParameterName"
+    categories = requests.get(secondaryURL)
+    categories = categories.json()
+
+    CategorizedPollutants = set()
+
+    for i in parameters:
+        for j in categories:
+            if (i in j["name"]):
+                CategorizedPollutants.add(j["context"])
+
+
+
+    print(CategorizedPollutants)
+    return CategorizedPollutants
+
+
 
 @app.route("/")
 def hello_world():
@@ -145,3 +176,4 @@ def getParameters():
 #StateSummary("CA")
 #stateAssessments("CA")
 #getWaterInfo("CA","CAR5412000020080820161412")
+PollutantCategorize("CA","CAR5412000020080820161412")
