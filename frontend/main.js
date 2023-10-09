@@ -100,7 +100,7 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
             cell2.innerHTML = 'Meeting Standard';
             break;
           case 'Cause':
-            cell2.inneHTML = 'Cause for Concern'
+            cell2.innerHTML = 'Cause for Concern'
             break;
           default:
             cell2.innerHTML = value[0];
