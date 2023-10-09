@@ -99,6 +99,9 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
           case 'Meeting Threshold':
             cell2.innerHTML = 'Meeting Standard';
             break;
+          case 'Cause':
+            cell2.inneHTML = 'Cause for Concern'
+            break;
           default:
             cell2.innerHTML = value[0];
             break;
