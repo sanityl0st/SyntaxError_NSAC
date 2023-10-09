@@ -94,7 +94,7 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
             cell2.innerHTML = 'Detrimental to health';
             break;
           case 'Insufficient Information':
-            cell2.innerHTML = 'Detected, but insignificant';
+            cell2.innerHTML = 'Detected, but Insignificant';
             break;
           case 'Meeting Threshold':
             cell2.innerHTML = 'Meeting Standard';
@@ -104,6 +104,18 @@ document.getElementById('search-form').addEventListener('submit', (event) => {
             break;
           default:
             cell2.innerHTML = value[0];
+            break;
+        }
+
+        switch (value[1]) {
+          case 'Y':
+            cell3.innerHTML = 'Yes';
+            break;
+          case 'N':
+            cell3.innerHTML = 'No';
+            break;
+          default:
+            cell3.innerHTML = '--';
             break;
         }
       });
